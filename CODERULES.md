@@ -6,4 +6,4 @@
 
 # Please read and follow these rules when contributing.
 
-( à implementer )
+( to implement )
