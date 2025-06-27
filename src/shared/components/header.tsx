@@ -1,10 +1,18 @@
+import { LogOut } from 'lucide-react'
+import { headers } from 'next/headers'
 import Link from 'next/link'
 import { Suspense } from 'react'
+import { auth } from '../libs/auth'
 import { getUser } from '../libs/auth-server'
 import { cn } from '../libs/utils'
 import { Avatar, AvatarFallback } from './ui/avatar'
 import { Button, buttonVariants } from './ui/button'
-import { DropdownMenu, DropdownMenuTrigger } from './ui/dropdown-menu'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from './ui/dropdown-menu'
 import { Skeleton } from './ui/skeleton'
 
 const NAV_ITEMS = [
@@ -49,6 +57,13 @@ export const Header = () => {
 export const AuthButton = async () => {
   const user = await getUser()
 
+  const handleLogout = async () => {
+    'use server'
+    await auth.api.signOut({
+      headers: await headers(),
+    })
+  }
+
   if (!user) {
     return (
       <Link
@@ -72,9 +87,22 @@ export const AuthButton = async () => {
               {user.name?.charAt(0).toUpperCase()}
             </AvatarFallback>
           </Avatar>
-          <p>{user.name}</p>
+          <p className='text-sm'>{user.name}</p>
         </Button>
       </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuItem className='cursor-pointer' asChild>
+          <form>
+            <button
+              formAction={handleLogout}
+              className='flex items-center gap-2 w-full'
+            >
+              <LogOut className='size-4' />
+              Logout
+            </button>
+          </form>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
     </DropdownMenu>
   )
 }
