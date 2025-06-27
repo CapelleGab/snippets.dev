@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📌 Snippets.dev
 
-## Getting Started
+**Snippets.dev** is an open-source SaaS platform that helps developers **save, organize, and share code snippets** across any programming language.
 
-First, run the development server:
+💡 Think of it as your **personal developer vault** — a central place where you store reusable code pieces so you never have to write the same logic twice.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Why Snippets.dev?
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+As developers, we often find ourselves **copying and pasting the same code**, over and over — a database query, a validation function, an environment config…
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+> ✨ Snippets.dev gives you a clean, searchable space to organize all your favorite bits of code and reuse them whenever you need.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🧠 Core Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- 📂 **Organize snippets** by language, category, and custom tags
+- 🔍 **Instant search** to quickly find any snippet
+- 🌐 **Modern web interface**, responsive and minimalist
+- 🧾 **Multi-language support** (JavaScript, Python, Rust, etc.)
+- 🔐 **Secure personal space** with authentication (BetterAuth, etc.)
+- 📤 **Easily share snippets** publicly or privately
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📈 Vision
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Our goal is to become the **go-to developer tool** for:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Saving time during development
+- Reusing quality code
+- Sharing best practices with the community
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js 15 (App Router, Server Actions), React Server Components
+- **Backend**: API Routes / Serverless Functions
+- **Database**: PostgreSQL with Prisma
+- **Authentication**: BetterAuth
+- **UI**: Tailwind CSS + Accessible Components
+- **Hosting**: ??
+
+---
+
+## 🧩 Coming Soon
+
+- 📎 Collaborative team snippets
+- 🔄 GitHub Gist sync
+- 🧠 AI-based snippet suggestions
+- 📦 Import/export support (JSON/YAML)
+- ⌨️ VSCode extension
+
+---
+
+## 🧑‍💻 Contributing
+
+Open-source contributions will be welcome soon.  
+Until then, feel free to open an issue to give feedback or share ideas 🙌
+
+---
+
+## 📬 Contact
+
+Want to chat or contribute?  
+→ hello@snippets.dev (coming soon)  
+→ Or just open an issue on GitHub
+
+---
+
+## 📝 License
+
+This project is licensed under the [MIT License](LICENSE).
