@@ -1,6 +1,7 @@
+import { Header } from '@/src/shared/components/header'
 import { ThemeProvider } from '@/src/shared/components/theme-provider'
 import { Toaster } from '@/src/shared/components/ui/sonner'
-import { cn } from '@/src/shared/lib/utils'
+import { cn } from '@/src/shared/libs/utils'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
@@ -36,8 +37,11 @@ export default function RootLayout({
         )}
       >
         <ThemeProvider>
-          {children}
-          <Toaster />
+          <main className='mx-auto h-full max-w-screen-lg'>
+            <Header />
+            {children}
+            <Toaster />
+          </main>
         </ThemeProvider>
       </body>
     </html>
