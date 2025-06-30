@@ -32,7 +32,7 @@ const NAV_ITEMS = [
 
 export const Header = () => {
   return (
-    <header className='flex items-center justify-between gap-4 py-4'>
+    <header className='flex items-center justify-between gap-4 py-4 '>
       <Link href='/' className='text-2xl font-bold'>
         Snippets.dev
       </Link>
