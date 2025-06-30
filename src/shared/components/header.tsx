@@ -66,15 +66,27 @@ export const AuthButton = async () => {
 
   if (!user) {
     return (
-      <Link
-        href='/auth/signup'
-        className={cn(
-          buttonVariants({ size: 'sm', variant: 'outline' }),
-          'px-5'
-        )}
-      >
-        SignUp
-      </Link>
+      <div className='flex items-center gap-2'>
+        <Link
+          href='/auth/signin'
+          className={cn(
+            buttonVariants({ size: 'sm', variant: 'outline'}),
+            'px-5'
+          )}
+        >
+          Sign In
+        </Link>
+        <Link
+          href='/auth/signup'
+          className={cn(
+            buttonVariants({ size: 'sm', variant: 'secondary' }),
+            'px-5'
+          )}
+        >
+          Sign Up
+        </Link>
+      </div>
+
     )
   }
 

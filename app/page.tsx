@@ -7,35 +7,7 @@ import {
 } from '@/src/shared/components/ui/card'
 import Image from 'next/image'
 import Link from 'next/link'
-
-const features = [
-  {
-    icon: '⚡',
-    title: 'Ultra-rapide',
-    desc: 'Interactions instantanées, synchronisation en temps réel.',
-  },
-  {
-    icon: '⌨️',
-    title: 'Tout au clavier',
-    desc: 'Naviguez et agissez sans lever les mains du clavier.',
-  },
-  {
-    icon: '🛠️',
-    title: 'Workflows sur-mesure',
-    desc: 'Adaptez la plateforme à votre façon de travailler.',
-  },
-]
-
-const languages = {
-  Python: 'https://vercel.com/',
-  JavaScript: 'https://stripe.com/',
-  TypeScript: 'https://www.postgresql.org/',
-  HTML: 'https://nextjs.org/',
-  CSS: 'https://www.prisma.io/',
-  Docker: 'https://ui.shadcn.com/',
-  Java: 'https://tailwindcss.com/',
-  'etc...': 'http://localhost:3000/explore',
-}
+import { FEATURES, LANGUAGES } from '@/src/constants/constants'
 
 export default function Home() {
   return (
@@ -68,7 +40,7 @@ export default function Home() {
           Commencer
         </Button>
         <div className='flex flex-wrap justify-center gap-6 mt-12 opacity-70'>
-          {Object.entries(languages).map(([key, value]) => (
+          {Object.entries(LANGUAGES).map(([key, value]) => (
             <Link
               key={key}
               href={value}
@@ -88,7 +60,7 @@ export default function Home() {
       >
         <h2 className='text-3xl font-bold text-white mb-2'>Fonctionnalités</h2>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl'>
-          {features.map(feature => (
+          {FEATURES.map(feature => (
             <Card
               key={feature.title}
               className='group border-0 bg-white/5 backdrop-blur-md hover:scale-[1.03] hover:shadow-2xl transition-transform duration-200 shadow-lg'
