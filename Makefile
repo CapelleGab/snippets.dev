@@ -13,9 +13,19 @@ open:
 	open $(BASE_URL)$(WEB_PORT)
 
 studio:
-	npx prisma studio && open $(BASE_URL)$(DB_PORT)
+	pnpm dlx prisma studio && open $(BASE_URL)$(DB_PORT)
 
 migrate:
-	npx prisma migrate dev
+	pnpm dlx prisma migrate dev
+
+generate:
+	pnpm dlx prisma generate
 
 # TODO: add docker compose commands
+up:
+	docker compose up -d
+
+down:
+	docker compose down
+
+.PHONY: run build open studio migrate generate up down
