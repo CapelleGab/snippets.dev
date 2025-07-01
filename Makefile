@@ -3,6 +3,17 @@ WEB_PORT=3000
 DB_PORT=5555
 BASE_URL=http://localhost:
 
+list:
+	@echo "Commands:"
+	@echo "  🚀 run - run the web app"
+	@echo "  🔨 build - build the web app"
+	@echo "  🌐 open - open the web app"
+	@echo "  💾 studio - open the prisma studio"
+	@echo "  🔄 migrate - migrate the database"
+	@echo "  🔄 generate - generate the prisma client"
+	@echo "  🐳 up - up the docker compose"
+	@echo "  🐳 down - down the docker compose"
+
 run:
 	pnpm dev
 
@@ -21,7 +32,6 @@ migrate:
 generate:
 	pnpm dlx prisma generate
 
-# TODO: add docker compose commands
 up:
 	docker compose up -d
 
