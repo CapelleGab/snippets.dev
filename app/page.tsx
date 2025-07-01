@@ -1,3 +1,4 @@
+import { FEATURES, LANGUAGES } from '@/src/constants/constants'
 import { Button } from '@/src/shared/components/ui/button'
 import {
   Card,
@@ -7,11 +8,10 @@ import {
 } from '@/src/shared/components/ui/card'
 import Image from 'next/image'
 import Link from 'next/link'
-import { FEATURES, LANGUAGES } from '@/src/constants/constants'
 
 export default function Home() {
   return (
-    <div className='flex flex-col gap-18 py-12 bg-[#08090a] min-h-screen'>
+    <div className='flex flex-col gap-18 py-12 bg-[#08090a] '>
       {/* Hero */}
       <section className='flex flex-col items-center text-center gap-8 pt-20 pb-24 animate-fade-in'>
         <Image

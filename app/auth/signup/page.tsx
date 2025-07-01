@@ -1,87 +1,97 @@
-'use client';
-
-import { useForm } from "react-hook-form";
-import { Form, FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/src/shared/components/ui/form";
-import { Input } from "@/src/shared/components/ui/input";
-import { Button } from "@/src/shared/components/ui/button";
-import { Checkbox } from "@/src/shared/components/ui/checkbox";
+import { Button } from '@/src/shared/components/ui/button'
+import { Github } from 'lucide-react'
+import Link from 'next/link'
+import SignupForm from './signup-form'
 
 export default function SignupPage() {
-  const form = useForm({
-    defaultValues: {
-      name: "",
-      email: "",
-      emailVerified: false,
-      image: "",
-    },
-  });
-
-  const onSubmit = (data: any) => {
-    // Remplace par ton appel API ou mutation
-    console.log(data);
-  };
-
   return (
-    <div className='flex flex-col items-center justify-center '>
-      <h1 className='text-4xl font-bold mb-6'>Sign Up</h1>
-      <p className='text-lg text-gray-700 mb-6'>Create your account to get started!</p>
-      <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 min-w-[320px] w-full max-w-sm bg-white p-6 rounded shadow">
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Name</FormLabel>
-                <FormControl>
-                  <Input placeholder="Your name" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="email"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Email</FormLabel>
-                <FormControl>
-                  <Input type="email" placeholder="you@email.com" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="image"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Image URL (optionnel)</FormLabel>
-                <FormControl>
-                  <Input placeholder="https://..." {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="emailVerified"
-            render={({ field }) => (
-              <FormItem className="flex flex-row items-center space-x-2">
-                <FormControl>
-                  <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                </FormControl>
-                <FormLabel>Email vérifié</FormLabel>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button type="submit" className="w-full">Créer le compte</Button>
-        </form>
-      </Form>
+    <div className='min-h-[calc(100vh-100px)] flex items-center justify-center px-4'>
+      <div className='w-full max-w-6xl flex items-center justify-center gap-16'>
+        {/* Left side - Form */}
+        <div className='w-full max-w-md'>
+          <div className='text-center mb-8'>
+            <h1 className='text-3xl font-semibold tracking-tight text-foreground'>
+              Create your account
+            </h1>
+            <p className='mt-2 text-sm text-muted-foreground'>
+              Join thousands of developers sharing code snippets
+            </p>
+          </div>
+
+          <SignupForm />
+
+          <div className='relative mt-6'>
+            <div className='absolute inset-0 flex items-center'>
+              <div className='w-full border-t border-border/50' />
+            </div>
+            <div className='relative flex justify-center text-xs uppercase'>
+              <span className='bg-background px-2 text-muted-foreground'>
+                Or continue with
+              </span>
+            </div>
+          </div>
+
+          <Button
+            variant='outline'
+            className='w-full h-10 mt-4 border-border/50 hover:bg-muted/50 transition-colors'
+            disabled
+          >
+            <Github className='w-4 h-4 mr-2' />
+            GitHub
+          </Button>
+
+          <div className='text-center mt-6'>
+            <p className='text-sm text-muted-foreground'>
+              Already have an account?{' '}
+              <Link
+                href='/auth/signin'
+                className='font-medium text-foreground hover:underline underline-offset-4'
+              >
+                Sign in
+              </Link>
+            </p>
+          </div>
+
+          <div className='text-center mt-4'>
+            <p className='text-xs text-muted-foreground'>
+              By creating an account, you agree to our{' '}
+              <Link
+                href='/terms-of-service'
+                className='underline underline-offset-4 hover:text-foreground'
+              >
+                Terms of Service
+              </Link>{' '}
+              and{' '}
+              <Link
+                href='/privacy-policie'
+                className='underline underline-offset-4 hover:text-foreground'
+              >
+                Privacy Policy
+              </Link>
+            </p>
+          </div>
+        </div>
+
+        {/* Right side - Visual */}
+        <div className='hidden lg:block w-full max-w-md bg-muted/30 rounded-2xl p-8'>
+          <div className='text-center space-y-6'>
+            <div className='w-32 h-32 mx-auto bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl flex items-center justify-center'>
+              <div className='w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center'>
+                <div className='w-8 h-8 bg-primary/20 rounded-xl' />
+              </div>
+            </div>
+            <div>
+              <h2 className='text-2xl font-semibold text-foreground'>
+                Share your code with the world
+              </h2>
+              <p className='mt-3 text-muted-foreground leading-relaxed'>
+                Create, organize, and share your code snippets with developers
+                worldwide. Build your portfolio and help others learn.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  );
+  )
 }

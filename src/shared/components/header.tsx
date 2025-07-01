@@ -1,16 +1,18 @@
-import { LogOut } from 'lucide-react'
-import { headers } from 'next/headers'
+'use client'
+
+import { LogOut, User } from 'lucide-react'
 import Link from 'next/link'
-import { Suspense } from 'react'
-import { auth } from '../libs/auth'
-import { getUser } from '../libs/auth-server'
+import { useRouter } from 'next/navigation'
+import { signOut, useSession } from '../libs/auth-client'
 import { cn } from '../libs/utils'
+import { getInitials } from '../utils/strings'
 import { Avatar, AvatarFallback } from './ui/avatar'
 import { Button, buttonVariants } from './ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
 import { Skeleton } from './ui/skeleton'
@@ -32,7 +34,7 @@ const NAV_ITEMS = [
 
 export const Header = () => {
   return (
-    <header className='flex items-center justify-between gap-4 py-4 '>
+    <header className='flex items-center justify-between gap-4 py-4'>
       <Link href='/' className='text-2xl font-bold'>
         Snippets.dev
       </Link>
@@ -47,30 +49,27 @@ export const Header = () => {
           </Link>
         ))}
       </div>
-      <Suspense fallback={<Skeleton className='h-10 w-20' />}>
-        <AuthButton />
-      </Suspense>
+      <AuthButton />
     </header>
   )
 }
 
-export const AuthButton = async () => {
-  const user = await getUser()
+export const AuthButton = () => {
+  const router = useRouter()
 
-  const handleLogout = async () => {
-    'use server'
-    await auth.api.signOut({
-      headers: await headers(),
-    })
+  const { data: session, isPending } = useSession()
+
+  if (isPending) {
+    return <Skeleton className='h-10 w-20' />
   }
 
-  if (!user) {
+  if (!session) {
     return (
       <div className='flex items-center gap-2'>
         <Link
           href='/auth/signin'
           className={cn(
-            buttonVariants({ size: 'sm', variant: 'outline'}),
+            buttonVariants({ size: 'sm', variant: 'outline' }),
             'px-5'
           )}
         >
@@ -86,33 +85,39 @@ export const AuthButton = async () => {
           Sign Up
         </Link>
       </div>
-
     )
+  }
+
+  const handleSignOut = async () => {
+    await signOut()
+    router.push('/auth/signin')
   }
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant='ghost' size='sm'>
+        <Button variant='ghost' size='sm' className='flex items-center gap-2'>
           <Avatar className='size-6'>
-            <AvatarFallback>
-              {user.name?.charAt(0).toUpperCase()}
+            <AvatarFallback className='text-xs'>
+              {getInitials(session.user.name || session.user.email)}
             </AvatarFallback>
           </Avatar>
-          <p className='text-sm'>{user.name}</p>
+          <span className='text-sm font-medium'>
+            {session.user.name || session.user.email}
+          </span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuItem className='cursor-pointer' asChild>
-          <form>
-            <button
-              formAction={handleLogout}
-              className='flex items-center gap-2 w-full'
-            >
-              <LogOut className='size-4' />
-              Logout
-            </button>
-          </form>
+      <DropdownMenuContent align='end' className='w-56'>
+        <DropdownMenuItem asChild>
+          <Link href='/dashboard' className='flex items-center gap-2'>
+            <User className='size-4' />
+            Dashboard
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem onClick={handleSignOut}>
+          <LogOut className='size-4' />
+          Sign Out
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

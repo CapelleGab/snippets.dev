@@ -28,9 +28,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang='en' suppressHydrationWarning className='h-full'>
       <body
-        className={cn(geistSans.variable, geistMono.variable, 'antialiased')}
+        className={cn(
+          geistSans.variable,
+          geistMono.variable,
+          'antialiased h-full'
+        )}
       >
         <ThemeProvider>
           <main className='mx-auto max-w-screen-lg'>
