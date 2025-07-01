@@ -17,13 +17,13 @@ const FEATURES = [
 ]
 
 const LANGUAGES = {
-  Python: 'https://vercel.com/',
-  JavaScript: 'https://stripe.com/',
-  TypeScript: 'https://www.postgresql.org/',
-  HTML: 'https://nextjs.org/',
-  CSS: 'https://www.prisma.io/',
-  Docker: 'https://ui.shadcn.com/',
-  Java: 'https://tailwindcss.com/',
+  Python: 'https://python.org/',
+  JavaScript: 'https://javascript.com/',
+  TypeScript: 'https://www.typescriptlang.org/',
+  HTML: 'https://html.com/',
+  CSS: 'https://css.com/',
+  Docker: 'https://docker.com/',
+  Java: 'https://java.com/',
   'etc...': 'http://localhost:3000/explore',
 }
 
