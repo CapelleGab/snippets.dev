@@ -5,6 +5,8 @@ BASE_URL=http://localhost:
 
 list:
 	@echo "Commands:"
+	@echo "  🔄 list - list the commands"
+	@echo "  🔄 first-time - first time setup"
 	@echo "  🚀 run - run the web app"
 	@echo "  🔨 build - build the web app"
 	@echo "  🌐 open - open the web app"
@@ -13,6 +15,11 @@ list:
 	@echo "  🔄 generate - generate the prisma client"
 	@echo "  🐳 up - up the docker compose"
 	@echo "  🐳 down - down the docker compose"
+
+first-time:
+	pnpm install
+	make gemerate
+	make up
 
 run:
 	pnpm dev
