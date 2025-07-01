@@ -96,9 +96,9 @@ export const AuthButton = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant='ghost' size='sm' className='flex items-center gap-2'>
-          <Avatar className='size-6'>
-            <AvatarFallback className='text-xs'>
+        <Button variant='ghost' className='flex items-center gap-2 h-fit py-1'>
+          <Avatar className='size-8'>
+            <AvatarFallback className='text-xs text-muted-foreground'>
               {getInitials(session.user.name || session.user.email)}
             </AvatarFallback>
           </Avatar>
