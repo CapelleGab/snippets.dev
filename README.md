@@ -48,6 +48,8 @@ Our goal is to become the **go-to developer tool** for:
 
 ## 🧩 Coming Soon
 
+- 📄 (CRUD) Snippet
+- 🫵 (CRUD) User
 - 📎 Collaborative team snippets
 - 🔄 GitHub Gist sync
 - 🧠 AI-based snippet suggestions
