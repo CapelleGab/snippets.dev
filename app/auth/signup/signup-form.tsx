@@ -26,21 +26,27 @@ export default function SignupForm() {
   const form = useForm<SignupFormData>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
-      name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       password: '',
+      github: '',
     },
   })
 
   const onSubmit = async (values: SignupFormData) => {
+    console.log('Form values:', values)
     setIsLoading(true)
 
     await signUp.email(
       {
         email: values.email,
-        name: values.name,
         password: values.password,
-      },
+        name: values.firstName + ' ' + values.lastName,
+        firstName: values.firstName,
+        lastName: values.lastName,
+        githubLink: values.github || undefined,
+      } as any,
       {
         onSuccess: () => {
           toast.success('Account created successfully!')
@@ -57,19 +63,39 @@ export default function SignupForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6'>
-        <div className='grid grid-cols-2 gap-4'>
+        <div className='flex gap-2'>
           <FormField
             control={form.control}
-            name='name'
+            name='firstName'
             render={({ field }) => (
-              <FormItem>
+              <FormItem className='w-1/2'>
                 <FormLabel className='text-sm font-medium text-foreground'>
-                  Name
+                  First name
                 </FormLabel>
                 <FormControl>
                   <Input
                     type='text'
-                    placeholder='John Doe'
+                    placeholder='John'
+                    className='h-10 border-border/50 focus:border-border transition-colors'
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name='lastName'
+            render={({ field }) => (
+              <FormItem className='w-1/2'>
+                <FormLabel className='text-sm font-medium text-foreground'>
+                  Last name
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    type='text'
+                    placeholder='Doe'
                     className='h-10 border-border/50 focus:border-border transition-colors'
                     {...field}
                   />
@@ -113,6 +139,27 @@ export default function SignupForm() {
                 <Input
                   type='password'
                   placeholder='Create a strong password'
+                  className='h-10 border-border/50 focus:border-border transition-colors'
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name='github'
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className='text-sm font-medium text-foreground'>
+                GitHub link (optional)
+              </FormLabel>
+              <FormControl>
+                <Input
+                  type='url'
+                  placeholder='https://github.com/username'
                   className='h-10 border-border/50 focus:border-border transition-colors'
                   {...field}
                 />
