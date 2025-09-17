@@ -18,7 +18,7 @@ list:
 
 first-time:
 	pnpm install
-	make gemerate
+	make generate
 	make up
 
 run:
