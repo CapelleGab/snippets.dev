@@ -14,7 +14,7 @@ export const signupSchema = z.object({
 
 export const signinSchema = z.object({
   email: z.string().email('Please enter a valid email address').toLowerCase(),
-  password: z.string().min(1, 'Password is required'),
+  password: z.string().min(1, 'Please enter your password'),
 })
 
 export type SignupFormData = z.infer<typeof signupSchema>

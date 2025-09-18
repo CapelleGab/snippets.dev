@@ -11,7 +11,7 @@ import Link from 'next/link'
 
 export default function Home() {
   return (
-    <div className='flex flex-col gap-18 py-12 bg-[#08090a] '>
+    <div className='flex flex-col gap-18 py-12'>
       {/* Hero */}
       <section className='flex flex-col items-center text-center gap-8 pt-20 pb-24 animate-fade-in'>
         <Image
